@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TuneLab | Car Tuning Guide</title>
+    <meta name="description" content="Compare car tuning options: engine, suspension, looks and audio, with pros, cons and a beginner's guide in 5 languages.">
+  <meta name="theme-color" content="#07070d">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏎️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@500;700&family=Vazirmatn:wght@400;600;800&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+      <div class="progress" id="progress"></div>
+
+  <!-- ====== HEADER ====== -->
+   <header class="header">
+    <a href="#home" class="logo">Tune<span>Lab</span></a>
+
+       <nav class="nav" id="nav">
+      <a href="#types" data-i18n="nav.types">Tuning Types</a>
+      <a href="#garage" data-i18n="nav.garage">My Car</a>
+      <a href="#parts" data-i18n="nav.parts">Parts</a>
+            <a href="#soundlab" data-i18n="nav.sound">Sound Lab</a>
+      <a href="#compare" data-i18n="nav.compare">Compare</a>
+      <a href="#guide" data-i18n="nav.guide">Guide</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+    </nav>
+
+    <select id="lang-select" aria-label="Language">
+      <option value="en">English</option>
+      <option value="fa">فارسی</option>
+      <option value="ru">Русский</option>
+      <option value="es">Español</option>
+      <option value="ja">日本語</option>
+    </select>
+
+    <button class="menu-btn" id="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <main>
+
+    <!-- ====== HERO ====== -->
+    <section id="home" class="hero">
+      <h1 data-i18n="hero.title">Build a Car That's Truly Yours</h1>
+      <p data-i18n="hero.subtitle">Compare tuning options, understand the pros and cons, and plan your build with confidence.</p>
+      <a href="#types" class="btn" data-i18n="hero.cta">Start Exploring</a>
+            <div class="stage">
+                <canvas id="scene3d" role="img" aria-label="Interactive 3D car model"></canvas>
+                <button class="sound-toggle" id="sound-toggle" type="button" aria-label="Sound on/off" aria-pressed="true">🔊</button>
+        <div class="mods">
+          <button class="chip" data-mod="engine" aria-pressed="false" data-i18n="types.engine.title">Engine Power</button>
+          <button class="chip" data-mod="chassis" aria-pressed="false" data-i18n="types.chassis.title">Suspension & Brakes</button>
+          <button class="chip" data-mod="look" aria-pressed="false" data-i18n="types.look.title">Exterior & Lighting</button>
+          <button class="chip" data-mod="audio" aria-pressed="false" data-i18n="types.audio.title">Sound & Audio</button>
+        </div>
+      </div>
+            <p class="stage-hint" data-i18n="hint.3d">Drag to rotate · Tap a button to see and hear the mod</p>
+    </section>
+
+    <!-- ====== TUNING TYPES ====== -->
+    <section id="types" class="section">
+      <h2 data-i18n="types.title">Tuning Types</h2>
+      <div class="cards">
+        <article class="card">
+          <h3 data-i18n="types.engine.title">Engine Power</h3>
+          <p data-i18n="types.engine.text">ECU remap, exhaust and intake upgrades for more power and response.</p>
+        </article>
+        <article class="card">
+          <h3 data-i18n="types.chassis.title">Suspension & Brakes</h3>
+          <p data-i18n="types.chassis.text">Better handling, stability and stopping power.</p>
+        </article>
+        <article class="card">
+          <h3 data-i18n="types.look.title">Exterior & Lighting</h3>
+          <p data-i18n="types.look.text">Body kits, wheels and lighting to change the car's character.</p>
+        </article>
+        <article class="card">
+          <h3 data-i18n="types.audio.title">Sound & Audio</h3>
+          <p data-i18n="types.audio.text">Speakers, amplifiers and sound insulation for a better cabin.</p>
+        </article>
+      </div>
+    </section>
+
+          <!-- ====== MY CAR ====== -->
+    <section id="garage" class="section">
+      <h2 data-i18n="garage.title">My Car</h2>
+      <p class="lead" data-i18n="garage.intro">Pick your car to get a build plan made for it. If your version is different, edit the details below.</p>
+      <div id="garage-root"></div>
+    </section>
+
+    <!-- ====== PARTS ENCYCLOPEDIA ====== -->
+    <section id="parts" class="section">
+      <h2 data-i18n="parts.title">Parts Encyclopedia</h2>
+      <p class="lead" data-i18n="parts.intro">What each part is, how it works, and who it's for. Use the filters to browse.</p>
+      <div class="filters" id="parts-filters"></div>
+      <div class="parts-grid" id="parts-grid"></div>
+    </section>
+
+    <!-- ====== DIFFERENCES ====== -->
+    <section id="vs" class="section">
+      <h2 data-i18n="vs.title">What's the Difference?</h2>
+      <div class="vs-grid" id="vs-grid"></div>
+    </section>
+
+        <!-- ====== SOUND LAB ====== -->
+    <section id="soundlab" class="section">
+      <h2 data-i18n="sound.title">Sound Lab</h2>
+      <p class="lead" data-i18n="sound.intro">Hear different exhaust tones and plan an audio system that suits your car.</p>
+      <div id="sound-root"></div>
+    </section>
+    
+    <!-- ====== COMPARISON TABLE ====== -->
+    <section id="compare" class="section">
+      <h2 data-i18n="compare.title">Quick Comparison</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th data-i18n="compare.th.type">Type</th>
+              <th data-i18n="compare.th.cost">Cost</th>
+              <th data-i18n="compare.th.pros">Pros</th>
+              <th data-i18n="compare.th.cons">Cons</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-i18n="types.engine.title">Engine Power</td>
+              <td data-i18n="compare.engine.cost">$$$</td>
+              <td data-i18n="compare.engine.pros">Noticeable power and response</td>
+              <td data-i18n="compare.engine.cons">May affect warranty, fuel use and engine life</td>
+            </tr>
+            <tr>
+              <td data-i18n="types.chassis.title">Suspension & Brakes</td>
+              <td data-i18n="compare.chassis.cost">$$</td>
+              <td data-i18n="compare.chassis.pros">Safer, sharper handling</td>
+              <td data-i18n="compare.chassis.cons">Stiffer, less comfortable ride</td>
+            </tr>
+            <tr>
+              <td data-i18n="types.look.title">Exterior & Lighting</td>
+              <td data-i18n="compare.look.cost">$$</td>
+              <td data-i18n="compare.look.pros">Unique look</td>
+              <td data-i18n="compare.look.cons">Local laws may restrict some changes</td>
+            </tr>
+            <tr>
+              <td data-i18n="types.audio.title">Sound & Audio</td>
+              <td data-i18n="compare.audio.cost">$ - $$$</td>
+              <td data-i18n="compare.audio.pros">Big comfort upgrade, no mechanical risk</td>
+              <td data-i18n="compare.audio.cons">Can drain the battery if installed badly</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ====== STEP-BY-STEP GUIDE ====== -->
+    <section id="guide" class="section">
+      <h2 data-i18n="guide.title">Where Do I Start?</h2>
+      <ol class="steps">
+        <li data-i18n="guide.step1">Define your goal: daily comfort, speed or looks.</li>
+        <li data-i18n="guide.step2">Set a realistic budget, including installation.</li>
+        <li data-i18n="guide.step3">Check local laws, insurance and warranty.</li>
+        <li data-i18n="guide.step4">Choose a trusted, experienced workshop.</li>
+      </ol>
+    </section>
+
+    <!-- ====== FAQ ====== -->
+    <section id="faq" class="section">
+      <h2 data-i18n="faq.title">FAQ</h2>
+      <details>
+        <summary data-i18n="faq.q1">Does tuning void my warranty?</summary>
+        <p data-i18n="faq.a1">It can. Always check your warranty terms before modifying the car.</p>
+      </details>
+      <details>
+        <summary data-i18n="faq.q2">Which upgrade should I do first?</summary>
+        <p data-i18n="faq.a2">Most people start with tires and suspension, because they improve safety and feel.</p>
+      </details>
+    </section>
+
+    <!-- ====== WARNING ====== -->
+        <!-- ====== WARNING ====== -->
+    <section class="section notice">
+      <p data-i18n="notice.text">Important: modifications may affect safety, insurance and legal compliance. This site is for general information only.</p>
+    </section>
+
+  </main>
+
+  <button class="to-top" id="to-top" type="button" aria-label="Back to top">↑</button>
+
+  <footer class="footer">
+    <p>© 2026 TuneLab</p>
+        <p data-i18n="footer.trademark">Brand names and logos belong to their respective owners and are used for identification only. TuneLab is not affiliated with any manufacturer.</p>
+  </footer>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="scene3d.js"></script>
+  <script src="audio.js"></script>
+  <script src="i18n-extra.js"></script>
+  <script src="i18n-cars.js"></script>
+  <script src="i18n-catalog.js"></script>
+  <script src="i18n-sound.js"></script>
+  <script src="art.js"></script>
+  <script src="parts.js"></script>
+  <script src="cars.js"></script>
+  <script src="soundlab.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>  
